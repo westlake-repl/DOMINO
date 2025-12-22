@@ -7,7 +7,7 @@
  
 `pip install -r reqs_domaincomb.txt`
 
-### CheckPoints download
+### Checkpoints Download
 
 `cp -r /yuanfajie/DomainReComb/checkpoints .`
 
