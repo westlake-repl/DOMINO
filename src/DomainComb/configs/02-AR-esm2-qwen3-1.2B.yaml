@@ -1,0 +1,7 @@
+Model:
+  kwargs:
+    class_name: models.Qwen3CAwDomainConditioning.Qwen3CAwDomainConditioning
+    qwen3_type: Qwen/Qwen3-0.6B
+    esm_type: facebook/esm2_t33_650M_UR50D
+
+Checkpoint_path: checkpoints/DomainComb/02-AR-esm2-qwen3-1.2B/pytorch_model.bin
