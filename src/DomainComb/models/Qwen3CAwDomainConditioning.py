@@ -15,6 +15,7 @@ from utils.init_utils import construct_class_by_name
 default_generation_config = GenerationConfig(
     max_length=1024,
     do_sample=True,
+    temperature=0.8,
 )
 
 
@@ -268,6 +269,7 @@ class Qwen3CAwDomainConditioning(BaseModel):
         for item in seq:
             processed_string = re.sub(r"<cls>", "", item)
             processed_string = re.sub(r"<eos>", "", processed_string)
+            processed_string = re.sub(r"<pad>", "", processed_string)
             processed_string = processed_string.replace(" ", "")
             cleaned_data.append(processed_string)
         return cleaned_data
