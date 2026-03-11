@@ -2,6 +2,7 @@ from typing import Dict, Any
 import torch
 from torch.utils.data import DataLoader
 from transformers import EsmTokenizer
+import json
 import sys
 sys.path.append("/storage/yuanfajieLab/yuanfajie/fengyuan/Pretrain")
 from utils.dataloader_utils import domain_fillin
@@ -21,18 +22,27 @@ def remove_lower_alpha(text: str) -> str:
 
 
 class Step2Dataset():
-    def __init__(self, tsv_path: str, tokenizer: EsmTokenizer):
+    def __init__(self, tokenizer: EsmTokenizer, tsv_path: str = None, jsonl_path: str = None):
         # super().__init__(**kwargs)
-        self.tsv_path = tsv_path
         self.tokenizer = tokenizer
+
+        self.tsv_path = tsv_path
+        self.jsonl_path = jsonl_path
+
         domain_pair_list = []
-        with open(tsv_path, "r") as f:
-            first_line = f.readline()
-            for line in f:
-                query_domain_seq, retrieval_domain_seq = line.strip().split("\t")[:2]
-                query_domain_seq = remove_lower_alpha(query_domain_seq)
-                retrieval_domain_seq = remove_lower_alpha(retrieval_domain_seq)
-                domain_pair_list.append((query_domain_seq, retrieval_domain_seq))
+        if tsv_path is not None:
+            assert jsonl_path is not None, "Given tsv path and jsonl path at the same time"
+            with open(tsv_path, "r") as f:
+                first_line = f.readline()
+                for line in f:
+                    query_domain_seq, retrieval_domain_seq = line.strip().split("\t")[:2]
+                    query_domain_seq = remove_lower_alpha(query_domain_seq)
+                    retrieval_domain_seq = remove_lower_alpha(retrieval_domain_seq)
+                    domain_pair_list.append((query_domain_seq, retrieval_domain_seq))
+        else:
+            with open(jsonl_path, 'r') as f:
+                for line in f:
+                    domain_pair_list.append(json.loads(line)['domain'])
         # self.domain_pair_list = domain_pair_list
         self.index_mapper = domain_pair_list
 
@@ -149,14 +159,15 @@ class Step2Dataset():
 
 class GenerationDataModule():
     def __init__(self, **kwargs):
-        self.tsv_path = kwargs.pop("tsv_path")
+        self.tsv_path = kwargs.get("tsv_path", None)
+        self.jsonl_path = kwargs.get("jsonl_path", None)
         self.tokenizer = kwargs.pop("tokenizer")
         self.eval_batch_size = kwargs.pop("eval_batch_size")
         self.num_workers_per_gpu = kwargs.pop("num_workers_per_gpu")
 
     def set_test_dataset(self):
         self.test_dataset = Step2Dataset(
-            tsv_path=self.tsv_path, tokenizer=self.tokenizer
+            tsv_path=self.tsv_path, jsonl_path=self.jsonl_path, tokenizer=self.tokenizer
         )
 
     def test_dataloader(self):
