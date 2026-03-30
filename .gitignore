@@ -1,6 +1,3 @@
 __pycache__
 checkpoints
-large_scale_design/inputs
-large_scale_design/results
-large_scale_design/results_test
 *.ipynb
