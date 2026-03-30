@@ -46,7 +46,7 @@ echo "运行推理任务..."
 python -u large_scale_design/scirpts/run_ray.py \
     --tsv_path $1 \
     --seed 0 \
-    --num_gpus 32
+    --num_gpus 16
 
 # 关闭Ray集群
 ray stop

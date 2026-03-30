@@ -22,7 +22,7 @@ def remove_lower_alpha(text: str) -> str:
 
 
 class Step2Dataset():
-    def __init__(self, tokenizer: EsmTokenizer, tsv_path: str = None, jsonl_path: str = None):
+    def __init__(self, tokenizer: EsmTokenizer, tsv_path: str | None = None, jsonl_path: str | None = None):
         # super().__init__(**kwargs)
         self.tokenizer = tokenizer
 
@@ -31,7 +31,7 @@ class Step2Dataset():
 
         domain_pair_list = []
         if tsv_path is not None:
-            assert jsonl_path is not None, "Given tsv path and jsonl path at the same time"
+            assert jsonl_path is None, "Given tsv path and jsonl path at the same time"
             with open(tsv_path, "r") as f:
                 first_line = f.readline()
                 for line in f:

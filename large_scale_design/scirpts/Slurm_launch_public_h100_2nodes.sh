@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -p public-h800
+#SBATCH -p public-h100
 #SBATCH -N 2
 #SBATCH -n 2
 #SBATCH -c 120
