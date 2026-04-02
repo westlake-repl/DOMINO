@@ -16,8 +16,6 @@ RESULT_DB=$WORKING_PATH/resultDB/RESULT_DB_$(basename $QUERY_DIR)_$random_id
 QUERY_DB=$WORKING_PATH/queryDB/QUERY_DB_$(basename $QUERY_DIR)_$random_id
 alnNew=$WORKING_PATH/alnNew/alnNew_$(basename $QUERY_DIR)_$random_id
 
-ALIGN_FASTA_PATH=$QUERY_DIR/mmseqs_vs_ur100.tsv
-
 if [ -d $TMP_DIR ]; then
     echo "TMP_DIR exists, remove it"
     echo "Be careful, this will remove all files in $TMP_DIR"
