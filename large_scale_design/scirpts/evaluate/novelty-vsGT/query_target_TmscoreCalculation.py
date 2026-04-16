@@ -10,7 +10,7 @@ from multiprocessing import Pool
 import random 
 
 tmalign_exec = "/storage/yuanfajieLab/yuanfajie/my_project/analysis/structural_comparison/TMscore/TMalign"
-GT_path = "/storage/yuanfajieLab/yuanfajie/fengyuan/Pretrain/analysis/AFDB_structure_download/0327-af_structures"
+GT_path = "/storage/yuanfajieLab/yuanfajie/fengyuan/Pretrain/analysis/AFDB_structure_download/0403-af_structures"
 
 def GTTemplateName(UniID):
     # path = f"{GT_path}/AF-{UniID}-F1-model_v4.pdb"
@@ -34,8 +34,8 @@ def calculatetmscore(pdb1, pdb2):
     target_line = content[14]
     q_tm_score = float(query_line.split()[1])
     t_tm_score = float(target_line.split()[1])
-    # return max(q_tm_score, t_tm_score)
-    return q_tm_score
+    return max(q_tm_score, t_tm_score)
+    # return q_tm_score
 
 def read_seq_from_pdb(file_path):
     aa_codes = {

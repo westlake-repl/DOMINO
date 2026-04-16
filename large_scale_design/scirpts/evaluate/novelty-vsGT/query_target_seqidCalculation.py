@@ -108,7 +108,9 @@ if __name__ == "__main__":
     print(f"Mean_seqid_query", np.mean(list(seqid_query_structure_dict.values())))
     print(f"Mean_seqid_target", np.mean(list(seqid_target_structure_dict.values())))
 
-    metrics = json.load(open(Path(target_path) / "log_metrics.json", 'r'))
+    # metrics = json.load(open(Path(target_path) / "log_metrics.json", 'r'))
+    output_json = args.jsonl_path.replace(".jsonl", "_log_metrics.json")
+    metrics = json.load(open(output_json, 'r'))
     metrics[f"Mean_seqid_query"] = np.mean(list(seqid_query_structure_dict.values()))
     metrics[f"Mean_seqid_target"] = np.mean(list(seqid_target_structure_dict.values()))
     metrics[f"seqid_query"] = seqid_query_structure_dict
