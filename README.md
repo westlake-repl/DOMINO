@@ -13,4 +13,4 @@
 
 ### Example Usage
 
-`python domaincomb.py --config src/DomainComb/configs/01-AR-esm2-qwen3-200M.yaml`
+`python domaincomb.py --config src/DomainComb/configs/02-AR-esm2-qwen3-1.2B.yaml`
