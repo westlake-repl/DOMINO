@@ -14,6 +14,7 @@ huggingface-cli download westlake-repl/DOMINO \
 
 
 After downloading, your directory structure should look like this:
+```bash
 DOMINO/
 ├── weights/
 │   ├── DOMIN/
