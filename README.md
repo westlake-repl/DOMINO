@@ -1,7 +1,6 @@
 ### Environment setup
 
 We provide a `requirement.yml` file to help you easily set up the environment. Please run the following script to create and activate the conda environment:
-
 ```bash
 conda env create -f requirement.yml
 conda activate DOMINO_env
@@ -16,6 +15,7 @@ To download the DOMINO model weights into the `weights` directory, please instal
 pip install -U huggingface_hub
 hf download westlake-repl/DOMINO --repo-type model --local-dir weights/
 ```
+
 After downloading, your directory structure should look like this:
 ```bash
 DOMINO/
@@ -34,9 +34,9 @@ You can quickly run the DOMIN inference code using the provided script:
 ```bash
 python DOMIN_inference.py
 ```
-Understanding the core logic:
+
 The script demonstrates how to extract representations for a given structural sequence (sa_seg) and calculate the matching similarity score. Here is the core snippet:
-```bash
+```python
 # 1. Get Embedding of Query and Key  
 query_repr = model.get_query_repr(sa_seg)
 key_repr = model.get_key_repr(sa_seg)
