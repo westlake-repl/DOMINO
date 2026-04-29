@@ -49,3 +49,25 @@ similarity_score = dot_product / model.model.temperature
 ```
 
 ### Inference with DOMO
+You can quickly run the DOMO inference code using the provided script:
+```bash
+python DOMO_inference.py
+```
+
+DOMO is designed to generate a combined protein sequence from multiple input domains. The core generation process involves tokenizing the input domain list and feeding it into the model's generate function:
+```python
+# 1. Tokenize the input list of domains
+tokenized_domain = tokenizer(domain_list, return_tensors="pt", padding=True, truncation=True, max_length=512)
+domain_ids = tokenized_domain.input_ids.to(device)
+domain_masks = tokenized_domain.attention_mask.to(device)
+
+# 2. Specify the number of domains per protein
+num_domains_per_protein = torch.tensor([len(domain_list)]).to(device)
+
+# 3. Generate the combined sequence
+domain_comb_sequence = model.generate(
+    domain_ids=domain_ids, 
+    domain_masks=domain_masks, 
+    num_domains_per_protein=num_domains_per_protein
+)["output_seqs"]
+```
