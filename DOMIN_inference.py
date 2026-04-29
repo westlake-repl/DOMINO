@@ -42,4 +42,4 @@ if __name__ == "__main__":
         logger.info(f"Key Shape:    {key_repr.shape}")
         temp_val = model.model.temperature.item() if torch.is_tensor(model.model.temperature) else model.model.temperature
         logger.info(f"Temperature:  {temp_val}")
-        logger.info(f"Similarity score (self): {similarity_score.item()}")
+        logger.info(f"Matching score (self): {similarity_score.item()}")
