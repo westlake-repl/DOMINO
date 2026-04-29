@@ -68,6 +68,5 @@ num_domains_per_protein = torch.tensor([len(domain_list)]).to(device)
 domain_comb_sequence = model.generate(
     domain_ids=domain_ids, 
     domain_masks=domain_masks, 
-    num_domains_per_protein=num_domains_per_protein
-)["output_seqs"]
+    num_domains_per_protein=num_domains_per_protein)["output_seqs"]
 ```
