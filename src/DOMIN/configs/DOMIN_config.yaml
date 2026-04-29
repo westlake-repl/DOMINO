@@ -2,4 +2,4 @@ Model:
   kwargs:
     config_path: "TED-650M-plddt70"
 
-Checkpoint_path: "DOMINO/DOMIN/DOMIN.pt"
+Checkpoint_path: "weights/DOMIN/DOMIN.pt"
