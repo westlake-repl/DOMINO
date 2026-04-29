@@ -1,10 +1,8 @@
 ### Download model weights
 
-We have released the DOMINO model weights on Hugging Face.
+We have released the DOMINO model weights on Hugging Face, **Model repository**: [DOMINO](https://huggingface.co/westlake-repl/DOMINO)
 
-**Model repository**: [westlake-repl/DOMINO](https://huggingface.co/westlake-repl/DOMINO)
-
-We provide a script to download the DOMINO model weights using `huggingface-cli`, as shown below. Please download all files and put them in the `weights` directory.
+We provide a script to download the DOMINO model weights, as shown below. Please download all files and put them in the `weights` directory.
 
 First step install hugging face_hub: 
 ```bash
