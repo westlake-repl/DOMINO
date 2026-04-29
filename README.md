@@ -1,3 +1,12 @@
+### Create Environment
+
+We provide a `requirement.yml` file to help you easily set up the environment. Please run the following command to create the conda environment:
+
+```bash
+conda env create -f requirement.yml
+conda activate DOMINO_env
+```
+
 ### Download model weights
 
 We have released the DOMINO model weights on Hugging Face: **[DOMINO](https://huggingface.co/westlake-repl/DOMINO)**
