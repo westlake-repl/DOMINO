@@ -1,6 +1,6 @@
 ### Environment setup
 
-We provide a `requirement.yml` file to help you easily set up the environment. Please run the following command to create the conda environment:
+We provide a `requirement.yml` file to help you easily set up the environment. Please run the following script to create and activate the conda environment:
 
 ```bash
 conda env create -f requirement.yml
