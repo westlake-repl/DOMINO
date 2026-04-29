@@ -28,3 +28,24 @@ DOMINO/
 ├── DOMO_inference.py
 └── ...
 ```
+
+### Inference with DOMIN
+You can quickly run the DOMIN inference code using the provided script:
+```bash
+python DOMIN_inference.py
+```
+Understanding the core logic:
+The script demonstrates how to extract representations for a given structural sequence (sa_seg) and calculate the matching similarity score. Here is the core snippet:
+```bash
+# 1. Get Embedding of Query and Key  
+query_repr = model.get_query_repr(sa_seg)
+key_repr = model.get_key_repr(sa_seg)
+
+# 2. Calculate dot product
+dot_product = torch.dot(query_repr.view(-1), key_repr.view(-1))
+
+# 3. Divide by model.temperature to get the final score
+similarity_score = dot_product / model.model.temperature
+```
+
+### Inference with DOMO
