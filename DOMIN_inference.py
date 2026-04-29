@@ -36,10 +36,10 @@ if __name__ == "__main__":
         dot_product = torch.dot(query_repr.view(-1), key_repr.view(-1))
 
         # divide by model.temperature
-        similarity_score = dot_product / model.temperature
+        similarity_score = dot_product / model.model.temperature
 
         logger.info(f"Query Shape:  {query_repr.shape}")
         logger.info(f"Key Shape:    {key_repr.shape}")
-        temp_val = model.temperature.item() if torch.is_tensor(model.temperature) else model.temperature
+        temp_val = model.model.temperature.item() if torch.is_tensor(model.model.temperature) else model.model.temperature
         logger.info(f"Temperature:  {temp_val}")
         logger.info(f"Similarity score (self): {similarity_score.item()}")
