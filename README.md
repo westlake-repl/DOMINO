@@ -1,4 +1,4 @@
-### Create Environment
+### Environment setup
 
 We provide a `requirement.yml` file to help you easily set up the environment. Please run the following command to create the conda environment:
 
