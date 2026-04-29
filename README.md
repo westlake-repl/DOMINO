@@ -6,15 +6,16 @@ We have released the DOMINO model weights on Hugging Face.
 
 We provide a script to download the DOMINO model weights using `huggingface-cli`, as shown below. Please download all files and put them in the `weights` directory.
 
+`First step install hugging face_hub:` 
 ```bash
-# If you haven't installed huggingface_hub, run: pip install -U huggingface_hub
-huggingface-cli download westlake-repl/DOMINO \
-                         --repo-type model \
-                         --local-dir weights/
+pip install -U huggingface_hub
+```
+
+`hf download westlake-repl/DOMINO --repo-type model --local-dir weights/`
 
 
 After downloading, your directory structure should look like this:
-```bash
+
 DOMINO/
 ├── weights/
 │   ├── DOMIN/
