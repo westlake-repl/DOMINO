@@ -6,7 +6,7 @@ from transformers import EsmTokenizer, EsmModel, GenerationConfig, Qwen3Config
 from typing import Optional
 
 import sys
-sys.path.append("./src/DomainComb/models")
+sys.path.append("./src/DOMO/models")
 from BaseModel import BaseModel
 from Qwen3.modeling_domainconditioning_qwen3 import Qwen3CAForCausalLM
 from Qwen3.configuration_domainconditioning_qwen3 import Qwen3Config
