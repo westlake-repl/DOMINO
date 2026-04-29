@@ -1,5 +1,0 @@
-Model:
-  kwargs:
-    config_path: "TED-650M-plddt70"
-
-Checkpoint_path: "TED-650M-plddt70/TED-650M-plddt70.pt"

@@ -1,4 +1,4 @@
-name: DomainReComb_env
+name: DOMINO_env
 channels:
   - defaults
   - nvidia

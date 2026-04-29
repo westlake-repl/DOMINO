@@ -4,7 +4,7 @@ import logging
 import torch 
 from transformers import EsmTokenizer
 import sys 
-sys.path.append("./src/DomainComb")
+sys.path.append("./src/DOMO")
 from utils.init_utils import construct_class_by_name
 
 logging.basicConfig(level=logging.INFO)
@@ -17,7 +17,7 @@ EXAMPLE_INPUTDOMAIN1 = ['MTAFQKLDFSVNDVIESVKDGNVIGRGGAGVVYHGKTPNGVEIAVKKLMGFNGIN
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str, default="src/DomainComb/configs/01-AR-esm2-qwen3-200M.yaml")
+    parser.add_argument("--config", type=str, default="src/DOMO/configs/DOMO_config.yaml")
     args = parser.parse_args()
     config = OmegaConf.load(args.config)
     model = construct_class_by_name(**config.Model.kwargs, logger=logger)
