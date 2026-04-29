@@ -1,4 +1,4 @@
-## Download model weights
+### Download model weights
 
 We have released the DOMINO model weights on Hugging Face.
 
