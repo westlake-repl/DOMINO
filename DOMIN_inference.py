@@ -2,7 +2,7 @@ import argparse
 import torch
 import logging
 from omegaconf import OmegaConf
-from src.DomainSearch.models.ted.ted_domain_model import TedDomainModel
+from src.DOMIN.models.ted.ted_domain_model import TedDomainModel
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
