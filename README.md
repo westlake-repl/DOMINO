@@ -35,7 +35,7 @@ You can quickly run the DOMIN inference code using the provided script:
 python DOMIN_inference.py
 ```
 
-The script demonstrates how to extract representations for a given structural sequence (sa_seg) and calculate the matching similarity score. Here is the core snippet:
+DOMIN is designed to evaluate the structural compatibility and matching degree of protein sequences. The core inference process involves extracting the Query and Key representations from a given structural sequence and computing their temperature-scaled dot product to derive the final matching score:
 ```python
 # 1. Get Embedding of Query and Key  
 query_repr = model.get_query_repr(sa_seg)
@@ -54,7 +54,7 @@ You can quickly run the DOMO inference code using the provided script:
 python DOMO_inference.py
 ```
 
-DOMO is designed to generate a combined protein sequence from multiple input domains. The core generation process involves tokenizing the input domain list and feeding it into the model's generate function:
+DOMO is engineered to synthesize a cohesive, multi-domain protein sequence from a diverse set of input domains. The core generation pipeline entails tokenizing the input domain list and feeding it into the model's conditional generation module to decode the integrated protein sequence:
 ```python
 # 1. Tokenize the input list of domains
 tokenized_domain = tokenizer(domain_list, return_tensors="pt", padding=True, truncation=True, max_length=512)
