@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 from tqdm import tqdm 
 import random
+assert 0, "error!! check!!!"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

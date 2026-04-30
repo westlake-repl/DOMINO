@@ -3,15 +3,15 @@ from tqdm import tqdm
 from Bio.Align import PairwiseAligner
 from multiprocessing import Pool, Manager
 import os
-assert 0, "error!! check!!!"
 
+assert 0, "error!! check!!!"
 # 配置参数
 INPUT_TSV_PATH = "/storage/yuanfajieLab/yuanfajie/sujin/Datasets/TED/embedding/afdb_cluster_power0.75/retrieval_results.tsv"
 # INPUT_TSV_PATH = "tmp.tsv"
 OUTPUT_TSV_PATH = "/storage/yuanfajieLab/yuanfajie/sujin/Datasets/TED/embedding/afdb_cluster_power0.75/retrieval_results_with_seqid.tsv"
 LMDB_SEQONLY_PATH = "/storage/yuanfajieLab/yuanfajie/datasets/AFDB/LMDB_seqonly"
 LMDB_DOMAIN_PATH = "/storage/yuanfajieLab/yuanfajie/datasets/AFDB/LMDB_uid2domain_info"
-NUM_PROCESSES = 96  # 使用所有可用CPU核心
+NUM_PROCESSES = 1  # 使用所有可用CPU核心
 
 
 def clear_seq(seq: str) -> str:
@@ -82,9 +82,12 @@ def process_line(line_data):
     gt_uid = gt_uids.split(",")[0]
 
     # 从LMDB获取数据
-    gt_seq = txn.get(gt_uid.encode()).decode()
-    gt_domain_info_list = eval(domain_txn.get(gt_uid.encode()).decode())
-
+    try:
+        gt_seq = txn.get(gt_uid.encode()).decode()
+        gt_domain_info_list = eval(domain_txn.get(gt_uid.encode()).decode())
+    except:
+        print(f"从LMDB获取数据时出错: {gt_uid}")
+        assert 0
     query_seq_clean = query_seq.replace("<unk>", "")
     target_seq_clean = target_seq.replace("<unk>", "")
 
@@ -97,8 +100,9 @@ def process_line(line_data):
         seq_id_list.append(calc_seq_identity(clear_seq(target_seq_clean), cur_domain_seq))
 
     # 计算最大seq id
+    print("seq_id_list", seq_id_list)
     max_seq_id = max(seq_id_list) if seq_id_list else 0.0
-
+    print("max_seq_id", max_seq_id)
     # 更新第3列(索引为2)的seq id值
     fields[2] = str(max_seq_id)
     new_line = "\t".join(fields) + "\n"
@@ -115,35 +119,25 @@ def main():
     print(f"输入文件: {INPUT_TSV_PATH}")
     print(f"输出文件: {OUTPUT_TSV_PATH}")
 
+    init_worker()
     # 读取所有行
     with open(INPUT_TSV_PATH, 'r') as f:
         header = f.readline()
-        lines = f.readlines()
+        # lines = f.readlines()
+        for idx, line in enumerate(f):
+            line_idx, new_line = process_line((line, idx))
+            print(new_line)
+            break
+1
 
-    print(f"总共读取 {len(lines)} 行数据")
+    # # 写入新文件
+    # print(f"写入结果到: {OUTPUT_TSV_PATH}")
+    # with open(OUTPUT_TSV_PATH, 'w') as f:
+    #     f.write(header)
+    #     for _, processed_line in results:
+    #         f.write(processed_line)
 
-    # 准备数据: (line, line_idx)
-    line_data = [(line, idx) for idx, line in enumerate(lines)]
-
-    # 使用多进程处理,每个进程启动时调用init_worker初始化LMDB连接
-    with Pool(processes=NUM_PROCESSES, initializer=init_worker) as pool:
-        results = list(tqdm(
-            pool.imap(process_line, line_data),
-            total=len(line_data),
-            desc="处理进度"
-        ))
-
-    # 按照原始顺序排序结果
-    results.sort(key=lambda x: x[0])
-
-    # 写入新文件
-    print(f"写入结果到: {OUTPUT_TSV_PATH}")
-    with open(OUTPUT_TSV_PATH, 'w') as f:
-        f.write(header)
-        for _, processed_line in results:
-            f.write(processed_line)
-
-    print("处理完成!")
+    # print("处理完成!")
 
 
 if __name__ == "__main__":
