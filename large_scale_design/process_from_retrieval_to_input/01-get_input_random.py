@@ -25,7 +25,8 @@ if __name__ == "__main__":
     for line in tqdm(lines):
         line_list = line.strip().split("\t")
         query_seg, seq_id = line_list[0], float(line_list[-4])
-        if seq_id < 0.3 and query_seg not in query_set:
+        # if seq_id < 0.3 and query_seg not in query_set:
+        if query_seg not in query_set:
             query_set.add(query_seg)
             new_content.append(line)
         if len(new_content) >= args.max_num + 1:

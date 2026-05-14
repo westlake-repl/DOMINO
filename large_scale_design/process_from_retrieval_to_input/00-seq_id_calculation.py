@@ -3,7 +3,6 @@ from tqdm import tqdm
 from Bio.Align import PairwiseAligner
 from multiprocessing import Pool, Manager
 import os
-assert 0, "error!! check!!!"
 
 # 配置参数
 INPUT_TSV_PATH = "/storage/yuanfajieLab/yuanfajie/sujin/Datasets/TED/embedding/afdb_cluster_power0.75/retrieval_results.tsv"
@@ -99,8 +98,7 @@ def process_line(line_data):
     # 计算最大seq id
     max_seq_id = max(seq_id_list) if seq_id_list else 0.0
 
-    # 更新第3列(索引为2)的seq id值
-    fields[2] = str(max_seq_id)
+    fields[4] = str(max_seq_id)
     new_line = "\t".join(fields) + "\n"
 
     return line_idx, new_line
