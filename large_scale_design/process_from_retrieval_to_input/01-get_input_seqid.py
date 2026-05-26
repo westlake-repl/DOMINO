@@ -10,7 +10,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_path", type=str, default="/storage/yuanfajieLab/yuanfajie/sujin/Datasets/TED/embedding/afdb_cluster_power0.75/retrieval_results.tsv")
     parser.add_argument("--output_name", type=str, required=True)
-    parser.add_argument("--prefetched_file", type=str, default=None)
+    parser.add_argument("--prefetched_file", type=str, default=None) 
+    # /storage/yuanfajieLab/yuanfajie/fengyuan/DomainReComb/large_scale_design/results/LargeScale-02-0324-retrieval_results/LargeScale-02-0324-retrieval_results_random_5000.tsv
     parser.add_argument("--max_num", type=int, default=5000000)
     args = parser.parse_args()
     random.seed(0)
