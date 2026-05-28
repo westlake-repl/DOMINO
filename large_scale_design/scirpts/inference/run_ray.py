@@ -18,7 +18,7 @@ import os
 PROJECT_ROOT = "/storage/yuanfajieLab/yuanfajie/fengyuan/DomainReComb"
 sys.path.append(os.path.join(PROJECT_ROOT, "src/DomainComb"))
 sys.path.append(PROJECT_ROOT)
-from large_scale_design.scirpts.dataloader import Step2Dataset
+from large_scale_design.scirpts.utils.dataloader import Step2Dataset
 from utils.init_utils import construct_class_by_name
 
 logging.basicConfig(level=logging.INFO)
