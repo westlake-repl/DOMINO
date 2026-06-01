@@ -253,4 +253,3 @@ dependencies:
       - urllib3==2.6.3
       - wrapt==2.1.2
       - yarl==1.23.0
-prefix: /tanqingsong/miniconda3/envs/DomainReComb_env
