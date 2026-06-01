@@ -39,6 +39,7 @@ DOMINO/
 └── ...
 ```
 
+
 ## Inference with DOMIN
 You can quickly run the DOMIN inference code using the provided script:
 ```bash
@@ -57,6 +58,7 @@ dot_product = torch.dot(query_repr.view(-1), key_repr.view(-1))
 # 3. Divide by model.temperature to get the final score
 similarity_score = dot_product / model.model.temperature
 ```
+
 
 ## Inference with DOMO
 You can quickly run the DOMO inference code using the provided script:
