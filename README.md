@@ -10,7 +10,7 @@ conda activate DOMINO_env
 ### Method 2: Using `requirement.txt`
 If the first method fails or you prefer using pip, you can manually create a Conda environment and install the dependencies using the provided `requirement.txt` file:
 ```bash
-conda create -n DOMINO_env python=3.11 -y
+conda create -n DOMINO_env python=3.11
 conda activate DOMINO_env
 pip install -r requirement.txt
 ```
