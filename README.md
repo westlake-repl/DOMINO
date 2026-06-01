@@ -1,12 +1,22 @@
-### Environment setup
+## Environment setup
 
+### Method 1: Using `requirement.yml` (Recommended)
 We provide a `requirement.yml` file to help you easily set up the environment. Please run the following script to create and activate the conda environment:
 ```bash
 conda env create -f requirement.yml
 conda activate DOMINO_env
 ```
 
-### Download model weights
+### Method 2: Using `requirement.txt`
+If the first method fails or you prefer using pip, you can manually create a Conda environment and install the dependencies using the provided `requirement.txt` file:
+```bash
+conda create -n DOMINO_env python=3.11 -y
+conda activate DOMINO_env
+pip install -r requirement.txt
+```
+
+
+## Download model weights
 
 We have released the DOMINO model weights on Hugging Face: **[DOMINO](https://huggingface.co/westlake-repl/DOMINO)**
 
@@ -29,7 +39,7 @@ DOMINO/
 └── ...
 ```
 
-### Inference with DOMIN
+## Inference with DOMIN
 You can quickly run the DOMIN inference code using the provided script:
 ```bash
 python DOMIN_inference.py
@@ -48,7 +58,7 @@ dot_product = torch.dot(query_repr.view(-1), key_repr.view(-1))
 similarity_score = dot_product / model.model.temperature
 ```
 
-### Inference with DOMO
+## Inference with DOMO
 You can quickly run the DOMO inference code using the provided script:
 ```bash
 python DOMO_inference.py
