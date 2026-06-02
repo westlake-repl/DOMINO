@@ -1,3 +1,12 @@
+# DOMINO
+
+<a href="https://www.biorxiv.org/content/10.64898/2026.05.01.721929v1"><img src="https://img.shields.io/badge/Paper-bioRxiv-green" style="max-width: 100%;"></a>
+<a href="http://www.protein-domino.com/"><img src="https://img.shields.io/badge/DOMINO-red?label=Server" style="max-width: 100%;"></a>
+<a href="https://huggingface.co/westlake-repl/DOMINO"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-yellow?label=Model" style="max-width: 100%;"></a>
+
+The repository is an official implementation of [DOMINO: Learning Domain Co-occurrence for Multidomain Protein Design](https://www.biorxiv.org/content/10.64898/2026.05.01.721929v1)
+
+
 ## Environment setup
 
 ### Method 1: Using `requirement.yml` (Recommended)
