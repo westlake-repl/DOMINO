@@ -9,19 +9,19 @@ The repository is an official implementation of [DOMINO: Learning Domain Co-occu
 
 ## Environment setup
 
-### Method 1: Using `requirement.yml` (Recommended)
-We provide a `requirement.yml` file to help you easily set up the environment. Please run the following script to create and activate the conda environment:
+### Method 1: Using `requirements.yml` (Recommended)
+We provide a `requirements.yml` file to help you easily set up the environment. Please run the following script to create and activate the conda environment:
 ```bash
-conda env create -f requirement.yml
+conda env create -f requirements.yml
 conda activate DOMINO_env
 ```
 
-### Method 2: Using `requirement.txt`
-If the first method fails or you prefer using pip, you can manually create a Conda environment and install the dependencies using the provided `requirement.txt` file:
+### Method 2: Using `requirements.txt`
+If the first method fails or you prefer using pip, you can manually create a Conda environment and install the dependencies using the provided `requirements.txt` file:
 ```bash
 conda create -n DOMINO_env python=3.11
 conda activate DOMINO_env
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 
 
