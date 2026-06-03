@@ -21,7 +21,7 @@ If the first method fails or you prefer using pip, you can manually create a Con
 ```bash
 conda create -n DOMINO_env python=3.11
 conda activate DOMINO_env
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 
